@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+a{
+color: white;
+}
+a:hover {
+color: white;
+text-decoration: none;
+}
+</style>
+<body>
+<div class="container my-2" align="center">
+
+<h3>Employee List</h3>
+<a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3" >Add Employee</a>
+    <table style="width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+    <thead>
+  <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Date Of Birth</th>
+      <th>Gender</th>
+      <th>Department</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="employee:${allemplist}">
+      <td th:text="${employee.id}"></td>
+        <td th:text="${employee.firstName}"></td>
+      <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.email}"></td>
+      <td th:text="${employee.dob}"></td>
+      <td th:text="${employee.gender}"></td>
+      <td th:text="${employee.department}"></td>
+        <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
+                class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"
+                class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>
